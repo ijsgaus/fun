@@ -46,7 +46,7 @@
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="Tools.fs" />
-    <Compile Include="Literals.fs" />
+    <Compile Include="Literal.fs" />
     <None Include="paket.references" />
     
   </ItemGroup>
