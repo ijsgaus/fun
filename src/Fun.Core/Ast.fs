@@ -10,25 +10,47 @@ type IAstNode =
 
 
 type LiteralValue =
-    | Int8 of int8
-    | UInt8 of uint8
-    | Int16 of int16
-    | UInt16 of uint16
-    | Int32 of int32
-    | UInt32 of uint32
-    | Int64 of int64
-    | UInt64 of uint64
-    | Float32 of float32
-    | Float of float
-    | Char of char
-    | String of string
+    | I8 of int8
+    | U8 of uint8
+    | I16 of int16
+    | U16 of uint16
+    | I32 of int32
+    | U32 of uint32
+    | I64 of int64
+    | U64 of uint64
+    | F32 of float32
+    | F64 of float
+    | CH of char
+    | STR of string
 
 type LiteralNode = 
-    | LiteralNode of value: LiteralValue * width : Width
+    | LiteralNode of LiteralValue * Width
+    member __.Width = 
+        match __ with 
+        | LiteralNode(_, w) -> w
+    member __.Value =
+        match __ with 
+        | LiteralNode(v, _) -> v
     interface IAstNode with
-        member __.Width = 
-            match __ with 
-            | LiteralNode(_, w) -> w
+        member __.Width = __.Width
+            
+
+type IdentifierNode =
+    | IdentifierNode of parts : string list * width : Width
+    member __.Width =
+        match __ with 
+        | IdentifierNode(_, w) -> w
+    member __.IsMultipart =
+        match __ with 
+        | IdentifierNode([_], _) -> false
+        | _ -> true
+    member __.Parts = 
+        match __ with 
+        | IdentifierNode(p, _) -> p
+    interface IAstNode with
+        member __.Width = __.Width
+            
+
 
         
 

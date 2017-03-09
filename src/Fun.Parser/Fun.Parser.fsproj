@@ -48,7 +48,7 @@
     <Compile Include="Tools.fs" />
     <Compile Include="Literal.fs" />
     <None Include="paket.references" />
-    
+    <Compile Include="Identifier.fs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <Choose>
