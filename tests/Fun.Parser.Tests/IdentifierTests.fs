@@ -14,7 +14,7 @@ module IdentifierTest =
     [<Tests>]
     let simples =
         let testSimple (s : string) v =
-            let awaited = IdentifierNode([v], uint32(s.Length))
+            let awaited = IdentifierNode(v, [], uint32(s.Length))
             let msg = sprintf "Should parse \"%s\" as %A" s awaited
             testCase msg <| fun () ->
                 let result = run Identifier.simple s
@@ -32,7 +32,8 @@ module IdentifierTest =
     [<Tests>]
     let complex =
         let testComplex (s : string) v =
-            let awaited = IdentifierNode(v, uint32(s.Length))
+            let (n :: p) = List.rev v
+            let awaited = IdentifierNode(n, p, uint32(s.Length))
             let msg = sprintf "Should parse \"%s\" as %A" s awaited
             testCase msg <| fun () ->
                 let result = run Identifier.complex s
