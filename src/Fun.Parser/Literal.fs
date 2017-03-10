@@ -11,41 +11,41 @@ module Literal =
     let literalEnd stream = 
         notFollowedBy (letter <|> digit <|> (anyOf ".")) stream
     
-    let int32 stream = (withWidth pint32 <| mkLiteral Int32 .>> literalEnd) stream
+    let i32 stream = (withWidth pint32 <| mkLiteral I32 .>> literalEnd) stream
     
-    let uint32 stream = (withWidth (puint32 .>> skipString "u") <| mkLiteral UInt32 .>> literalEnd) stream
+    let u32 stream = (withWidth (puint32 .>> skipString "u") <| mkLiteral U32 .>> literalEnd) stream
     
-    let int8 stream = (withWidth (pint8 .>> skipString "y") <| mkLiteral Int8 .>> literalEnd) stream
+    let i8 stream = (withWidth (pint8 .>> skipString "y") <| mkLiteral I8 .>> literalEnd) stream
     
-    let uint8 stream = (withWidth (puint8 .>> skipString "uy") <| mkLiteral UInt8 .>> literalEnd) stream
+    let u8 stream = (withWidth (puint8 .>> skipString "uy") <| mkLiteral U8 .>> literalEnd) stream
     
-    let int16 stream = (withWidth (pint16 .>> skipString "s") <| mkLiteral Int16 .>> literalEnd) stream
+    let i16 stream = (withWidth (pint16 .>> skipString "s") <| mkLiteral I16 .>> literalEnd) stream
     
-    let uint16 stream = (withWidth (puint16 .>> skipString "us") <| mkLiteral UInt16 .>> literalEnd) stream
+    let u16 stream = (withWidth (puint16 .>> skipString "us") <| mkLiteral U16 .>> literalEnd) stream
     
-    let int64 stream = (withWidth (pint64 .>>? skipString "L") <| mkLiteral Int64 .>>? literalEnd) stream
+    let i64 stream = (withWidth (pint64 .>>? skipString "L") <| mkLiteral I64 .>>? literalEnd) stream
     
-    let uint64 stream = (withWidth (puint64 .>>? skipString "UL") <| mkLiteral UInt64 .>>? literalEnd) stream
+    let u64 stream = (withWidth (puint64 .>>? skipString "UL") <| mkLiteral U64 .>>? literalEnd) stream
     
-    let float stream = (withWidth pfloat <| mkLiteral Float .>> literalEnd) stream
+    let f64 stream = (withWidth pfloat <| mkLiteral F64 .>> literalEnd) stream
     
-    let float32 stream = (withWidth (pfloat .>> skipString "f") <| mkLiteral (float32 >> Float32) .>> literalEnd) stream
+    let f32 stream = (withWidth (pfloat .>> skipString "f") <| mkLiteral (float32 >> F32) .>> literalEnd) stream
 
     let number stream = 
          attemptChoice [ 
-            int32
-            uint32
-            int8
-            uint8
-            int16
-            uint16
-            int64
-            uint64
-            float
-            float32
+            i32
+            u32
+            i8
+            u8
+            i16
+            u16
+            i64
+            u64
+            f64
+            f32
          ] stream
     
-    let isChar stream =  
+    let ch stream =  
         let normalChar = satisfy (fun c -> c <> '\\' && c <> '\'')
         let unescape c =
             match c with
@@ -65,9 +65,9 @@ module Literal =
         let unicodeChar = (pstring @"\u" <|> pstring @"\U") >>. (parray 4 hexDigit |>> toChar) *)
         let charParser = normalChar <|> escapedChar //<|> unicodeChar
         let trick = pchar '\''
-        let fchar = withWidth (between trick trick charParser) <| fun c w -> LiteralNode (Char c, w)
+        let fchar = withWidth (between trick trick charParser) <| fun c w -> LiteralNode (CH c, w)
         fchar stream
-    let string stream =
+    let str stream =
         let str = pstring
         let escape =  anyOf "\"\\/bfnrt"
                   |>> function
@@ -90,8 +90,9 @@ module Literal =
         let escapedCharSnippet = str "\\" >>. (escape <|> unicodeEscape)
         let normalCharSnippet  = manySatisfy (fun c -> c <> '"' && c <> '\\')
 
-        between (str "\"") (str "\"")
-                (stringsSepBy normalCharSnippet escapedCharSnippet)
-        
+
+        let ss = between (str "\"") (str "\"") (stringsSepBy normalCharSnippet escapedCharSnippet)
+        let fs = withWidth ss (fun s w -> LiteralNode(STR(s), w))
+        fs stream
         
     

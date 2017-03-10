@@ -526,7 +526,7 @@ NUGET
     System.Security.Cryptography.Algorithms (4.3) - framework: >= net46, >= netstandard16, netcore11
     System.Security.Cryptography.Encoding (4.3) - framework: >= net46, >= netstandard16, netcore11
     System.Security.Cryptography.OpenSsl (4.3) - framework: >= net463, >= netstandard16
-      runtime.native.System.Security.Cryptography.OpenSsl (>= 4.3)
+      runtime.native.System.Security.Cryptography.OpenSsl (>= 4.3) - framework: >= net463, >= netstandard16, monoandroid, monotouch, xamarinios, xamarinmac
       System.Collections (>= 4.3) - framework: >= netstandard16
       System.IO (>= 4.3) - framework: >= net463, >= netstandard16
       System.Resources.ResourceManager (>= 4.3) - framework: >= netstandard16
