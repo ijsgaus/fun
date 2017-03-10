@@ -39,8 +39,16 @@ type IdentifierNode =
     member __.Parts = let (IdentifierNode (n, p,_)) = __ in n :: p
     interface IAstNode with
         member __.Width = __.Width
-            
 
+type ImportNode =
+    {
+        Namespace : IdentifierNode
+    }        
+
+type CompilationUnit =
+    {
+
+    }
 
         
 
