@@ -1,9 +1,0 @@
-source https://www.nuget.org/api/v2
-nuget FAKE
-nuget FSharp.Core
-nuget FParsec
-nuget Expecto
-nuget Expecto.BenchmarkDotNet
-nuget Expecto.FsCheck
-nuget Expecto.VisualStudio.TestAdapter version_in_path: true 
-nuget System.Collections.Immutable
