@@ -2,3 +2,4 @@
 FParsec
 Expecto
 Expecto.FsCheck
+Expecto.VisualStudio.TestAdapter
