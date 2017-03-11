@@ -4,7 +4,9 @@
 #r "../../build/Fun.dll"
 #load "Combinators.fs"
 open FParsec
+open Fun.Ast
 open Fun.Parser
 
 // Define your library scripting code here
 run Combinators.UnicodeEscape @"\u1234"
+run (Combinators.bracket (SBracket [(Round,Open)])) "(["

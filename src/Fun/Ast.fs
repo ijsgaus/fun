@@ -76,6 +76,12 @@ module Ast =
             if not (isValid bracket) then invalidArg "bracket" "Empty bracket is invalid"
             let (SBracket lst) = bracket
             lst |> List.map pairToChar |> String.concat ""
+        (*let parse s =
+            let lst = s |> Seq.map (fun p -> charToPair p, p) |> Seq.toList
+            if lst |> List.exists (fun Option.isNone then
+                Error(sprintf "Invalid bracket symbols %A" (lst |> List.filter Option.isNone |> *)
+            
+
             
     type Divider =
         | Comma
