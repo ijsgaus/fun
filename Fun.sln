@@ -1,31 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{22B7919F-D58D-4D9B-B2C5-7403CA287659}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".paket", ".paket", "{53EA12D2-9959-413A-8430-14D4AF92C796}"
 	ProjectSection(SolutionItems) = preProject
-		build.cmd = build.cmd
-		build.fsx = build.fsx
+		.paket\paket.bootstrapper.exe = .paket\paket.bootstrapper.exe
 		paket.dependencies = paket.dependencies
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{BC42F49C-F758-4CEE-9138-B63BB67C0042}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Fun", "src\Fun\Fun.fsproj", "{B64E2997-3065-4233-B4C7-314899021255}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".paket", ".paket", "{7447CCBF-6182-4017-A574-4CDC76A689F6}"
-	ProjectSection(SolutionItems) = preProject
-		.paket\paket.bootstrapper.exe = .paket\paket.bootstrapper.exe
-	EndProjectSection
-EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Fun.Compiler.Core", "src\Fun.Compiler.Core\Fun.Compiler.Core.fsproj", "{B2527549-B078-46A5-AA86-73EAE83CCDDE}"
-EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Fun.Parser", "src\Fun.Parser\Fun.Parser.fsproj", "{CAE1829A-2B14-4F3E-BD47-3B66AC4EE70F}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{B97E7A26-C290-4BEC-9B14-3B0FBBABDBD0}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Fun.Parser.Tests", "tests\Fun.Parser.Tests\Fun.Parser.Tests.fsproj", "{BAE5E44B-4D57-40BD-AF2A-77F80E443017}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Fun", "src\Fun\Fun.fsproj", "{EFA40C63-A4E9-4268-A94D-6082DF57D110}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Fun.Parser", "src\Fun.Parser\Fun.Parser.fsproj", "{2AE5941F-E131-49AE-8FFA-05C9007A03FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,30 +23,20 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B64E2997-3065-4233-B4C7-314899021255}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B64E2997-3065-4233-B4C7-314899021255}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B64E2997-3065-4233-B4C7-314899021255}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B64E2997-3065-4233-B4C7-314899021255}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B2527549-B078-46A5-AA86-73EAE83CCDDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B2527549-B078-46A5-AA86-73EAE83CCDDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B2527549-B078-46A5-AA86-73EAE83CCDDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B2527549-B078-46A5-AA86-73EAE83CCDDE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CAE1829A-2B14-4F3E-BD47-3B66AC4EE70F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CAE1829A-2B14-4F3E-BD47-3B66AC4EE70F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CAE1829A-2B14-4F3E-BD47-3B66AC4EE70F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CAE1829A-2B14-4F3E-BD47-3B66AC4EE70F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BAE5E44B-4D57-40BD-AF2A-77F80E443017}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BAE5E44B-4D57-40BD-AF2A-77F80E443017}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BAE5E44B-4D57-40BD-AF2A-77F80E443017}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BAE5E44B-4D57-40BD-AF2A-77F80E443017}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFA40C63-A4E9-4268-A94D-6082DF57D110}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFA40C63-A4E9-4268-A94D-6082DF57D110}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFA40C63-A4E9-4268-A94D-6082DF57D110}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFA40C63-A4E9-4268-A94D-6082DF57D110}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2AE5941F-E131-49AE-8FFA-05C9007A03FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AE5941F-E131-49AE-8FFA-05C9007A03FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AE5941F-E131-49AE-8FFA-05C9007A03FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AE5941F-E131-49AE-8FFA-05C9007A03FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{B64E2997-3065-4233-B4C7-314899021255} = {BC42F49C-F758-4CEE-9138-B63BB67C0042}
-		{B2527549-B078-46A5-AA86-73EAE83CCDDE} = {BC42F49C-F758-4CEE-9138-B63BB67C0042}
-		{CAE1829A-2B14-4F3E-BD47-3B66AC4EE70F} = {BC42F49C-F758-4CEE-9138-B63BB67C0042}
-		{BAE5E44B-4D57-40BD-AF2A-77F80E443017} = {B97E7A26-C290-4BEC-9B14-3B0FBBABDBD0}
+		{EFA40C63-A4E9-4268-A94D-6082DF57D110} = {BC42F49C-F758-4CEE-9138-B63BB67C0042}
+		{2AE5941F-E131-49AE-8FFA-05C9007A03FD} = {BC42F49C-F758-4CEE-9138-B63BB67C0042}
 	EndGlobalSection
 EndGlobal

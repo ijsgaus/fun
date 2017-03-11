@@ -1,2 +1,4 @@
-﻿FSharp.Core
+FAKE
+FSharp.Core
 System.Collections.Immutable
+System.ValueTuple
