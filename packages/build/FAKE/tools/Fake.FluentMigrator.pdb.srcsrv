@@ -1,0 +1,8 @@
+SRCSRV: ini ------------------------------------------------
+VERSION=2
+SRCSRV: variables ------------------------------------------
+SRCSRVVERCTRL=https
+SRCSRVTRG=https://raw.github.com/fsharp/FAKE/0a340721a3d37d59ebc1d30a44fa6b769c716b0c/%var2%
+SRCSRV: source files ---------------------------------------
+C:\code\fake\src\app\Fake.FluentMigrator\FluentMigratorHelper.fs*src/app/Fake.FluentMigrator/FluentMigratorHelper.fs
+SRCSRV: end ------------------------------------------------

@@ -1,9 +1,9 @@
 language: csharp
 
-sudo: false
+sudo: false  # use the new container-based Travis infrastructure 
 
-before-install:
+before_install:
   - chmod +x build.sh
-
-script:
-  - ./build.sh 
+ 
+script: 
+  - ./build.sh Build
