@@ -1,21 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26228.4
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".paket", ".paket", "{53EA12D2-9959-413A-8430-14D4AF92C796}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".paket", ".paket", "{F5AA1C90-9740-4B2F-802F-7C87CDE70A56}"
 	ProjectSection(SolutionItems) = preProject
-		.paket\paket.bootstrapper.exe = .paket\paket.bootstrapper.exe
 		paket.dependencies = paket.dependencies
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{BC42F49C-F758-4CEE-9138-B63BB67C0042}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1FDC0955-37F4-4872-8CF2-8D32C3E9ABAE}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{B97E7A26-C290-4BEC-9B14-3B0FBBABDBD0}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Fun", "src\Fun\Fun.fsproj", "{19265CD5-E805-42C9-96BB-4CD10E05AE14}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Fun", "src\Fun\Fun.fsproj", "{B64E2997-3065-4233-B4C7-314899021255}"
-EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Fun.Parser", "src\Fun.Parser\Fun.Parser.fsproj", "{CAE1829A-2B14-4F3E-BD47-3B66AC4EE70F}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Fun.Parser", "src\Fun.Parser\Fun.Parser.fsproj", "{ED7409A2-D92C-42A1-9FE0-6765B4EE3BC8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,20 +20,20 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B64E2997-3065-4233-B4C7-314899021255}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B64E2997-3065-4233-B4C7-314899021255}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B64E2997-3065-4233-B4C7-314899021255}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B64E2997-3065-4233-B4C7-314899021255}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CAE1829A-2B14-4F3E-BD47-3B66AC4EE70F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CAE1829A-2B14-4F3E-BD47-3B66AC4EE70F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CAE1829A-2B14-4F3E-BD47-3B66AC4EE70F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CAE1829A-2B14-4F3E-BD47-3B66AC4EE70F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19265CD5-E805-42C9-96BB-4CD10E05AE14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19265CD5-E805-42C9-96BB-4CD10E05AE14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19265CD5-E805-42C9-96BB-4CD10E05AE14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19265CD5-E805-42C9-96BB-4CD10E05AE14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED7409A2-D92C-42A1-9FE0-6765B4EE3BC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED7409A2-D92C-42A1-9FE0-6765B4EE3BC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED7409A2-D92C-42A1-9FE0-6765B4EE3BC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED7409A2-D92C-42A1-9FE0-6765B4EE3BC8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{B64E2997-3065-4233-B4C7-314899021255} = {BC42F49C-F758-4CEE-9138-B63BB67C0042}
-		{CAE1829A-2B14-4F3E-BD47-3B66AC4EE70F} = {BC42F49C-F758-4CEE-9138-B63BB67C0042}
+		{19265CD5-E805-42C9-96BB-4CD10E05AE14} = {1FDC0955-37F4-4872-8CF2-8D32C3E9ABAE}
+		{ED7409A2-D92C-42A1-9FE0-6765B4EE3BC8} = {1FDC0955-37F4-4872-8CF2-8D32C3E9ABAE}
 	EndGlobalSection
 EndGlobal

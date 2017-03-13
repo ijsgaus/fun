@@ -2,5 +2,5 @@
 open System.Collections.Immutable
 
 module Compiler =
-    let OperatorChars = [ '!'; '%'; '&'; '*'; '+'; '-' ; '/'; '<'; '='; '>'; '?'; '@'; '^'; '|'; '~' ]
+    let OperatorChars = [ '!'; '%'; '&'; '*'; '+'; '-' ; '/'; '<'; '='; '>'; '?'; '@'; '^'; '|'; '~'; ':' ]
 

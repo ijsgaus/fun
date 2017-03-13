@@ -1,0 +1,10 @@
+#load "include.system.collections.csx" 
+#load "include.system.diagnostics.debug.csx" 
+#load "include.system.globalization.csx" 
+#load "include.system.linq.csx" 
+#load "include.system.resources.resourcemanager.csx" 
+#load "include.system.runtime.csx" 
+#load "include.system.runtime.extensions.csx" 
+#load "include.system.threading.csx" 
+#r "../../../packages/System.Collections.Immutable/lib/netstandard1.0/System.Collections.Immutable.dll" 
+System.Console.WriteLine("system.collections.immutable Loaded"); 

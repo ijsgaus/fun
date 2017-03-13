@@ -11,12 +11,12 @@ module Ast =
 
     type IAstNode  = 
         inherit IHasWidth
-        abstract member Chieldren : IAstNode arr
+        abstract member Children : IAstNode arr
 
     let (|Branch|Leaf|) (node: IAstNode) =
-        if node.Chieldren.Length > 0 then Branch else Leaf
+        if node.Children.Length > 0 then Branch else Leaf
 
-    type Keywords =
+    type Keyword =
         | Namespace
         | Alias
         | Open
@@ -34,55 +34,48 @@ module Ast =
         | WS of Whitespace * uint32 
         | Comment of Comment * uint32
         member __.Width = match __ with | WS(_, w) -> w | Comment(_, w) -> w
-        interface IHasWidth with
+        interface IAstNode with
             member __.Width = __.Width
+            member __.Children = arr.Empty
             
-
-    type OpenClose = | Open | Close
-
-    type BracketKind = | Round | Square | Curly | Angle
         
-    type SBracket = SBracket of (BracketKind * OpenClose) list 
+    type BracketSymbol = internal BracketSymbol of string
         
     module Bracket =
-        let isValid (b : SBracket) = let (SBracket l) = b in l <> []
+        let BracketChars =
+            [
+                '(', ')'
+                '[', ']'
+                '{', '}'
+                '<', '>'
+            ]
+
+        let isValidCh ch =
+            BracketChars |> List.exists (fun (oc, cc) -> oc = ch || cc = ch)
         
-        let inverse (bracket : SBracket) =
-            let (SBracket lst) = bracket
-            lst |> List.map (fun (t, o) ->t, if o = Open then Close else Open) |> List.rev |> SBracket
+        let create str = 
+            if (String.length str) = 0 then
+                Error("Empty string")
+            else
+                let noValid = str |> String.filter (isValidCh >> not)
+                if noValid.Length = 0 then BracketSymbol(str) |> Ok else sprintf "Invalid bracket chars \"%s\"" noValid |> Error
+
+        let inverse bracket =
+            let picker ch pair =
+                match pair with
+                | oc, cc when oc = ch -> Some(cc)
+                | oc, cc when cc = ch -> Some(oc)
+                | _ -> None
+            let inverseCh ch = BracketChars |> Seq.pick (picker ch)
+            let (BracketSymbol str) = bracket
+            BracketSymbol(str |> String.map inverseCh)
         
-        let private fromPair o c oc = match oc with | Open -> o | Close -> c
-
-        let pairToChar (knd, oc) =
-            match knd with
-            | Round ->  fromPair "(" ")" oc
-            | Square -> fromPair "[" "]" oc
-            | Curly ->  fromPair "{" "}" oc
-            | Angle ->  fromPair "<" ">" oc
-
-        let charToPair ch =
-            match ch with
-            | '(' -> Some (Round, Open)
-            | ')' -> Some (Round, Close)
-            | '[' -> Some (Square, Open)
-            | ']' -> Some (Square, Close)
-            | '<' -> Some (Angle, Open)
-            | '>' -> Some (Angle, Close)
-            | '{' -> Some (Curly, Open)
-            | '}' -> Some (Curly, Close)
-            | _ -> None
-
-        let toCode bracket =
-            if not (isValid bracket) then invalidArg "bracket" "Empty bracket is invalid"
-            let (SBracket lst) = bracket
-            lst |> List.map pairToChar |> String.concat ""
-        (*let parse s =
-            let lst = s |> Seq.map (fun p -> charToPair p, p) |> Seq.toList
-            if lst |> List.exists (fun Option.isNone then
-                Error(sprintf "Invalid bracket symbols %A" (lst |> List.filter Option.isNone |> *)
-            
+        let toCode bracket = let (BracketSymbol str) = bracket in str
 
             
+            
+
+    
     type Divider =
         | Comma
         | Semicolon
@@ -96,11 +89,52 @@ module Ast =
         | F32 of float32 | F64 of float
         | CH of char | STR of string
 
-    type Token =
-        | Keyword of Keywords * uint32 
-        | Bracket of SBracket
-         
-//type Identifier() 
+    
 
-//type CompilationUnit() =
+
+    type Name =
+        private
+        | Name of string
+        override __.ToString() = let (Name s) = __ in s
+
+    type Path =
+        | Path of Name list 
+
+    type Identifier = 
+        | Identifier of Path * Name
+        | Operator of string
+
+    type Token =
+        | Keyword of Keyword * uint32 
+        | Bracket of BracketSymbol
+
+    type private StructBag<'t> = { Data : 't }
+
+    type private NodesBag = StructBag<ImmutableArray<IAstNode>>
+    let private ChildrenProperty = System.Runtime.CompilerServices.ConditionalWeakTable<IAstNode, NodesBag>()
+
+    type OpenStatement =
+        {
+            PrefixTrivia : Trivia arr;
+            What : Identifier;
+            SuffixTrivia : Trivia arr;
+        }
+        
+
+    module Identifier =
+        let initName s =
+            let valid1 (str :string) =
+                System.Char.IsLetter(s, 0) || ([ '$'; '#'; '_' ] |> List.contains (str.[0])) 
+            let validTail (str :string) =
+                let validCh ch = System.Char.IsLetterOrDigit(ch) || ch = '_'
+                str |> Seq.exists (validCh >> not) |> not
+            match s with
+            | null -> Error("Name cannot be null")
+            | "" -> Error("Name cannot bew empty string")
+            | _ when valid1 s |> not -> Error("Name must start from letter or $, #, _")
+            | _ when validTail s |> not -> Error("Name must contains only letter and alpha and _")
+            | _ -> Ok(Name s)
+        
+
+//    type CompilationUnit() =
     

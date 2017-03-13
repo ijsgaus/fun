@@ -19,5 +19,14 @@ module Combinators =
     
     let bracket br stream = pstring (Bracket.toCode br) stream
 
+    let private idOption = IdentifierOptions()
+    let primIdentifier stream = identifier idOption stream
+    let operator stream = many1Chars opchar stream 
+
+    let simpleIdentifier stream =
+        choice [
+            primIdentifier
+            operator
+        ] stream
     
 
