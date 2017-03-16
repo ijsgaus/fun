@@ -17,14 +17,28 @@ Target "Default" (fun _ ->
 
 
 
+Target "Restore" (fun _ ->
+    DotNetCli.Restore (fun p ->
+                            { p with
+                                Project = "Fun.sln"
+                            })
+)
+
 Target "BuildApp" (fun _ ->
-    !! "*.sln"
+    (*!! "*.sln"
       |> MSBuildRelease buildDir "Build"
-      |> Log "AppBuild-Output: "
+      |> Log "AppBuild-Output: "*)
+    
+    DotNetCli.Build (fun p ->
+                         { p with
+                                Configuration = "Debug"
+                                Project = "Fun.sln"
+                         })
 )
 
 // Dependencies
 "Clean"
+  ==> "Restore"
   ==> "BuildApp"
   ==> "Default"
 
